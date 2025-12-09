@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TailArena - Transform your dog training journey into an exciting game. Earn badges, complete lessons, and compete on the leaderboard!">
+    <title>TailArena - Gamified Dog Training</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 0;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .hero-logo {
+            height: 80px;
+            width: auto;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Features Section */
+        .features {
+            background: white;
+            padding: 5rem 0;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #667eea;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Badges Section */
+        .badges {
+            background: #f8f9fa;
+            padding: 5rem 0;
+        }
+
+        .badges h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .badges-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .badge-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .badge-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .badge-item h4 {
+            color: #667eea;
+            margin-top: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .badge-item p {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* Legal Section */
+        .legal-section {
+            background: white;
+            padding: 5rem 0;
+        }
+
+        .legal-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .legal-content h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .legal-content h3 {
+            color: #764ba2;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-content h4 {
+            color: #333;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .legal-content p, .legal-content li {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .legal-content ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-content strong {
+            color: #333;
+        }
+
+        .legal-nav {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .legal-nav button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            margin: 0 0.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .legal-nav button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .legal-nav button.active {
+            background: #764ba2;
+        }
+
+        .legal-document {
+            display: none;
+        }
+
+        .legal-document.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+                flex-direction: column;
+            }
+
+            .hero-logo {
+                height: 60px;
+            }
+
+            .logo img {
+                height: 32px;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .legal-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .legal-nav button {
+                margin: 0.5rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        .highlight {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #667eea;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .last-updated {
+            color: #999;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="logo.png" alt="TailArena Logo">
+                    TailArena
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#badges">Badges</a></li>
+                    <li><a href="#legal">Legal</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>
+                <img src="logo.png" alt="TailArena Logo" class="hero-logo">
+                TailArena
+            </h1>
+            <p>Transform Your Dog Training Journey Into an Exciting Game</p>
+            <a href="#" class="cta-button">Download on App Store</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Why TailArena?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Gamified Training</h3>
+                    <p>Turn every training session into a fun adventure. Earn XP and level up as your pup learns!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎖️</div>
+                    <h3>Achievement System</h3>
+                    <p>Unlock 5 unique badges from Pup Pilot to Grand Champion as you progress.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Expert Lessons</h3>
+                    <p>Access professional training content organized by category and difficulty level.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Global Leaderboard</h3>
+                    <p>Compete with trainers worldwide and see how you rank on the global leaderboard.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your pet's growth with detailed statistics and achievements.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🐾</div>
+                    <h3>Multi-Pet Support</h3>
+                    <p>Train multiple dogs with individual profiles and progress tracking for each.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Badges Section -->
+    <section id="badges" class="badges">
+        <div class="container">
+            <h2>Collect All 5 Badges</h2>
+            <p class="badges-subtitle">Progress through the ranks as your pet masters new skills</p>
+            <div class="badge-list">
+                <div class="badge-item">
+                    <div style="font-size: 4rem;">🎓</div>
+                    <h4>Pup Pilot</h4>
+                    <p>Starting your journey<br><strong>0 XP</strong></p>
+                </div>
+                <div class="badge-item">
+                    <div style="font-size: 4rem;">⭐</div>
+                    <h4>Ring Rover</h4>
+                    <p>Mastering the basics<br><strong>1,000 XP</strong></p>
+                </div>
+                <div class="badge-item">
+                    <div style="font-size: 4rem;">🛡️</div>
+                    <h4>Vanguard</h4>
+                    <p>Leading the pack<br><strong>1,500 XP</strong></p>
+                </div>
+                <div class="badge-item">
+                    <div style="font-size: 4rem;">👑</div>
+                    <h4>Chase Champion</h4>
+                    <p>Excellence in training<br><strong>2,000 XP</strong></p>
+                </div>
+                <div class="badge-item">
+                    <div style="font-size: 4rem;">🏆</div>
+                    <h4>Grand Champion</h4>
+                    <p>Ultimate achievement<br><strong>2,500 XP</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Section -->
+    <section id="legal" class="legal-section">
+        <div class="container">
+            <div class="legal-nav">
+                <button onclick="showDocument('privacy')" id="privacyBtn" class="active">Privacy Policy</button>
+                <button onclick="showDocument('terms')" id="termsBtn">Terms of Service</button>
+            </div>
+
+            <div class="legal-content">
+                <!-- Privacy Policy -->
+                <div id="privacy" class="legal-document active">
+                    <h2>Privacy Policy</h2>
+                    <p class="last-updated">Last Updated: December 9, 2025</p>
+
+                    <h3>Introduction</h3>
+                    <p>TailArena ("we," "our," or "us") respects your privacy and is committed to protecting your personal data. This privacy policy explains how we collect, use, and protect your information when you use our mobile application.</p>
+
+                    <h3>Information We Collect</h3>
+                    
+                    <h4>Information You Provide</h4>
+                    <ul>
+                        <li><strong>Account Information:</strong> Email address, username, password (encrypted)</li>
+                        <li><strong>Pet Information:</strong> Pet name, breed, age, training goals, behavioral data</li>
+                        <li><strong>Profile Data:</strong> User preferences, training settings</li>
+                        <li><strong>Progress Data:</strong> Lesson completions, XP earned, achievements, badges</li>
+                    </ul>
+
+                    <h4>Automatically Collected Information</h4>
+                    <ul>
+                        <li><strong>Usage Data:</strong> App features used, lessons completed, time spent in app</li>
+                        <li><strong>Device Information:</strong> Device type, operating system, app version</li>
+                        <li><strong>Performance Data:</strong> Crash reports, error logs (anonymized)</li>
+                    </ul>
+
+                    <h3>How We Use Your Information</h3>
+                    <p>We use your information to:</p>
+                    <ul>
+                        <li>Provide and maintain the TailArena service</li>
+                        <li>Create and manage your account</li>
+                        <li>Track your training progress and achievements</li>
+                        <li>Display your ranking on leaderboards</li>
+                        <li>Process subscription payments</li>
+                        <li>Send important service notifications</li>
+                        <li>Improve app features and user experience</li>
+                        <li>Respond to support requests</li>
+                        <li>Prevent fraud and abuse</li>
+                    </ul>
+
+                    <h3>Data Storage and Security</h3>
+                    <ul>
+                        <li>All data is stored securely using Supabase infrastructure</li>
+                        <li>Passwords are encrypted using industry-standard methods</li>
+                        <li>We use SSL/TLS encryption for data transmission</li>
+                        <li>We implement appropriate security measures to protect against unauthorized access</li>
+                    </ul>
+
+                    <h3>Data Sharing</h3>
+                    <div class="highlight">
+                        <strong>We DO NOT sell your personal information.</strong>
+                    </div>
+                    <p>We may share data with:</p>
+                    <ul>
+                        <li><strong>Payment Processors:</strong> For subscription management (Apple Pay)</li>
+                        <li><strong>Service Providers:</strong> Cloud hosting (Supabase), analytics</li>
+                        <li><strong>Legal Requirements:</strong> If required by law or to protect our rights</li>
+                    </ul>
+
+                    <h3>Your Rights</h3>
+                    <p>You have the right to:</p>
+                    <ul>
+                        <li>Access your personal data</li>
+                        <li>Update or correct your information</li>
+                        <li>Delete your account and data</li>
+                        <li>Export your data</li>
+                        <li>Opt-out of non-essential communications</li>
+                    </ul>
+                    <p>To exercise these rights, contact us at: <strong>support@tailarena.com</strong></p>
+
+                    <h3>Children's Privacy</h3>
+                    <p>TailArena is not intended for children under 13. We do not knowingly collect data from children under 13. If you believe we have collected data from a child under 13, please contact us immediately.</p>
+
+                    <h3>Data Retention</h3>
+                    <p>We retain your data while your account is active and for a reasonable period thereafter. You can request deletion at any time.</p>
+
+                    <h3>Third-Party Services</h3>
+                    <p>We use:</p>
+                    <ul>
+                        <li><strong>Supabase:</strong> Database and authentication</li>
+                        <li><strong>Apple App Store:</strong> In-app purchases and subscriptions</li>
+                    </ul>
+                    <p>These services have their own privacy policies.</p>
+
+                    <h3>Changes to This Policy</h3>
+                    <p>We may update this policy periodically. We will notify you of significant changes via email or app notification.</p>
+
+                    <h3>Contact Us</h3>
+                    <p>If you have questions about this privacy policy:</p>
+                    <p><strong>Email:</strong> support@tailarena.com</p>
+
+                    <h3>International Users</h3>
+                    <p>By using TailArena, you consent to the transfer of your information to the United States and other countries where our service providers operate.</p>
+
+                    <p style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #ddd;"><strong>Effective Date:</strong> December 9, 2025<br>© 2025 TailArena. All rights reserved.</p>
+                </div>
+
+                <!-- Terms of Service -->
+                <div id="terms" class="legal-document">
+                    <h2>Terms of Service</h2>
+                    <p class="last-updated">Last Updated: December 9, 2025</p>
+
+                    <h3>1. Acceptance of Terms</h3>
+                    <p>By downloading, installing, or using TailArena ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, do not use the App.</p>
+
+                    <h3>2. Description of Service</h3>
+                    <p>TailArena is a mobile application designed to help users train their dogs through gamified lessons, progress tracking, and achievement systems.</p>
+
+                    <h3>3. User Accounts</h3>
+                    
+                    <h4>3.1 Account Creation</h4>
+                    <ul>
+                        <li>You must provide accurate, current information</li>
+                        <li>You are responsible for maintaining account security</li>
+                        <li>You must be at least 13 years old to use the App</li>
+                        <li>One person or entity may maintain only one account</li>
+                    </ul>
+
+                    <h4>3.2 Account Security</h4>
+                    <ul>
+                        <li>You are responsible for all activities under your account</li>
+                        <li>Notify us immediately of any unauthorized access</li>
+                        <li>We are not liable for losses due to unauthorized account use</li>
+                    </ul>
+
+                    <h3>4. Subscription and Payments</h3>
+                    
+                    <h4>4.1 Free Plan</h4>
+                    <ul>
+                        <li>Access to basic features and lessons (Levels 1-3)</li>
+                        <li>Limited functionality</li>
+                    </ul>
+
+                    <h4>4.2 Premium Subscription</h4>
+                    <ul>
+                        <li>Monthly subscription: $19.99/month</li>
+                        <li>Access to all lessons and features</li>
+                        <li>Billed through Apple App Store</li>
+                        <li>Automatically renews unless cancelled</li>
+                    </ul>
+
+                    <h4>4.3 Payment Terms</h4>
+                    <ul>
+                        <li>All purchases are final and non-refundable except as required by law</li>
+                        <li>Subscriptions auto-renew unless cancelled 24 hours before renewal</li>
+                        <li>Prices subject to change with 30 days notice</li>
+                        <li>Managed through your Apple ID</li>
+                    </ul>
+
+                    <h4>4.4 Cancellation</h4>
+                    <ul>
+                        <li>Cancel anytime through Apple App Store settings</li>
+                        <li>Access continues until end of billing period</li>
+                        <li>No refunds for partial periods</li>
+                    </ul>
+
+                    <h3>5. User Content</h3>
+                    
+                    <h4>5.1 Your Content</h4>
+                    <ul>
+                        <li>You retain ownership of pet profiles and training data</li>
+                        <li>You grant us license to use, store, and display your content for service provision</li>
+                        <li>You are responsible for your content accuracy</li>
+                    </ul>
+
+                    <h4>5.2 Prohibited Content</h4>
+                    <p>You may not:</p>
+                    <ul>
+                        <li>Upload illegal, harmful, or offensive content</li>
+                        <li>Impersonate others</li>
+                        <li>Upload false or misleading information</li>
+                        <li>Violate others' intellectual property rights</li>
+                    </ul>
+
+                    <h3>6. Acceptable Use</h3>
+                    <p>You agree NOT to:</p>
+                    <ul>
+                        <li>Violate any laws or regulations</li>
+                        <li>Hack, reverse engineer, or modify the App</li>
+                        <li>Use automated systems to access the App</li>
+                        <li>Interfere with other users' experience</li>
+                        <li>Attempt to gain unauthorized access</li>
+                        <li>Use the App for commercial purposes without permission</li>
+                        <li>Share account credentials</li>
+                    </ul>
+
+                    <h3>7. Intellectual Property</h3>
+                    
+                    <h4>7.1 Our Rights</h4>
+                    <ul>
+                        <li>The App, including all content, features, and functionality, is owned by TailArena</li>
+                        <li>Our trademarks, logos, and service marks are protected</li>
+                        <li>You may not use our intellectual property without permission</li>
+                    </ul>
+
+                    <h4>7.2 License to You</h4>
+                    <ul>
+                        <li>We grant you a limited, non-exclusive, non-transferable license to use the App</li>
+                        <li>This license is revocable and ends when you stop using the App</li>
+                    </ul>
+
+                    <h3>8. Leaderboards and Competitions</h3>
+                    <ul>
+                        <li>Rankings are based on XP and progress</li>
+                        <li>We reserve the right to remove suspicious or fraudulent entries</li>
+                        <li>Prize-based competitions governed by separate rules</li>
+                        <li>By participating, you consent to display of your username and rank</li>
+                    </ul>
+
+                    <h3>9. Disclaimers</h3>
+                    
+                    <h4>9.1 Service Availability</h4>
+                    <ul>
+                        <li>The App is provided "as is" and "as available"</li>
+                        <li>We do not guarantee uninterrupted or error-free service</li>
+                        <li>We may modify or discontinue features at any time</li>
+                    </ul>
+
+                    <h4>9.2 Training Information</h4>
+                    <div class="highlight">
+                        <ul>
+                            <li>TailArena provides general dog training information</li>
+                            <li>We are not a substitute for professional dog trainers</li>
+                            <li>We are not responsible for any injury or damage resulting from app use</li>
+                            <li>Always prioritize your pet's safety</li>
+                        </ul>
+                    </div>
+
+                    <h3>10. Limitation of Liability</h3>
+                    <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW:</p>
+                    <ul>
+                        <li>We are not liable for any indirect, incidental, or consequential damages</li>
+                        <li>Our total liability is limited to the amount you paid in the past 12 months</li>
+                        <li>We are not responsible for third-party content or services</li>
+                    </ul>
+
+                    <h3>11. Modifications</h3>
+                    
+                    <h4>11.1 To Terms</h4>
+                    <ul>
+                        <li>We may modify these Terms at any time</li>
+                        <li>We will notify you of material changes</li>
+                        <li>Continued use constitutes acceptance of modified Terms</li>
+                    </ul>
+
+                    <h3>12. Termination</h3>
+                    
+                    <h4>12.1 By You</h4>
+                    <p>You may stop using the App and delete your account at any time</p>
+
+                    <h4>12.2 By Us</h4>
+                    <p>We may suspend or terminate your access if:</p>
+                    <ul>
+                        <li>You violate these Terms</li>
+                        <li>You engage in fraudulent activity</li>
+                        <li>Required by law</li>
+                        <li>For operational reasons</li>
+                    </ul>
+
+                    <h3>13. Contact Information</h3>
+                    <p>For questions about these Terms:</p>
+                    <p><strong>Email:</strong> support@tailarena.com</p>
+
+                    <h3>14. Acknowledgment</h3>
+                    <div class="highlight">
+                        <p><strong>BY USING TAILARENA, YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND AGREE TO BE BOUND BY THESE TERMS OF SERVICE.</strong></p>
+                    </div>
+
+                    <p style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #ddd;"><strong>Effective Date:</strong> December 9, 2025<br>© 2025 TailArena. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p><strong>TailArena</strong> - Transform Your Dog Training Journey</p>
+            <p>
+                <a href="#legal" onclick="showDocument('privacy')">Privacy Policy</a> | 
+                <a href="#legal" onclick="showDocument('terms')">Terms of Service</a>
+            </p>
+            <p>Contact: <a href="mailto:support@tailarena.com">support@tailarena.com</a></p>
+            <p>&copy; 2025 TailArena. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showDocument(docId) {
+            // Hide all documents
+            document.querySelectorAll('.legal-document').forEach(doc => {
+                doc.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.legal-nav button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected document
+            document.getElementById(docId).classList.add('active');
+            
+            // Add active class to clicked button
+            document.getElementById(docId + 'Btn').classList.add('active');
+            
+            // Scroll to top of legal section
+            document.getElementById('legal').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

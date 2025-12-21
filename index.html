@@ -94,6 +94,13 @@
             width: auto;
         }
 
+        .badge-image {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin: 0 auto 1rem;
+        }
+
         .hero p {
             font-size: 1.5rem;
             margin-bottom: 2rem;
@@ -409,8 +416,8 @@
     <section id="home" class="hero">
         <div class="container">
             <h1>
-                <img src="logo.png" alt="TailArena Logo" class="hero-logo">
-                TailArena
+                <img src="title.png" alt="Tail Arena" class="hero-logo" onerror="this.onerror=null; this.src='logo.png'; this.nextSibling.textContent='TailArena';">
+                <span style="display: none;"></span>
             </h1>
             <p>Transform Your Dog Training Journey Into an Exciting Game</p>
             <a href="#" class="cta-button">Download on App Store</a>
@@ -420,37 +427,37 @@
     <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
-            <h2>Why TailArena?</h2>
+            <h2>Why Tail Arena?</h2>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🎮</div>
-                    <h3>Gamified Training</h3>
-                    <p>Turn every training session into a fun adventure. Earn XP and level up as your pup learns!</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎖️</div>
-                    <h3>Achievement System</h3>
-                    <p>Unlock 5 unique badges from Pup Pilot to Grand Champion as you progress.</p>
+                    <div class="feature-icon">🐾</div>
+                    <h3>Pet Profile Management</h3>
+                    <p>Create detailed profiles for your pets with photos, breed info, age, and birthday tracking. Support for multiple pets with different subscription tiers.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📚</div>
-                    <h3>Expert Lessons</h3>
-                    <p>Access professional training content organized by category and difficulty level.</p>
+                    <h3>Interactive Training Lessons</h3>
+                    <p>Access expert-designed training curriculum with video demonstrations, step-by-step instructions, and progressive skill-building exercises.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Daily Challenges</h3>
+                    <p>Complete fun daily challenges to keep training engaging. Earn points, build streaks, and unlock achievements as you practice with your pet.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🏆</div>
-                    <h3>Global Leaderboard</h3>
-                    <p>Compete with trainers worldwide and see how you rank on the global leaderboard.</p>
+                    <h3>Leaderboard & Community</h3>
+                    <p>Compete globally with other pet trainers. Climb rankings, earn badges, and join a supportive community of pet enthusiasts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💝</div>
+                    <h3>Personalized Care Plans</h3>
+                    <p>Get customized training recommendations based on your pet's age, breed, and skill level. Tailored content for puppies, adults, and seniors.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <h3>Progress Tracking</h3>
-                    <p>Monitor your pet's growth with detailed statistics and achievements.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🐾</div>
-                    <h3>Multi-Pet Support</h3>
-                    <p>Train multiple dogs with individual profiles and progress tracking for each.</p>
+                    <p>Monitor lesson completions, skill development, and achievement history. View detailed statistics and celebrate your pet's milestones.</p>
                 </div>
             </div>
         </div>
@@ -463,27 +470,32 @@
             <p class="badges-subtitle">Progress through the ranks as your pet masters new skills</p>
             <div class="badge-list">
                 <div class="badge-item">
-                    <div style="font-size: 4rem;">🎓</div>
+                    <img src="badge-pup-pilot.png" alt="Pup Pilot Badge" class="badge-image" onerror="this.style.display='none'; this.nextElementSibling.style.fontSize='4rem'; this.nextElementSibling.textContent='🎓';">
+                    <div style="display: none;"></div>
                     <h4>Pup Pilot</h4>
                     <p>Starting your journey<br><strong>0 XP</strong></p>
                 </div>
                 <div class="badge-item">
-                    <div style="font-size: 4rem;">⭐</div>
+                    <img src="badge-ring-rover.png" alt="Ring Rover Badge" class="badge-image" onerror="this.style.display='none'; this.nextElementSibling.style.fontSize='4rem'; this.nextElementSibling.textContent='⭐';">
+                    <div style="display: none;"></div>
                     <h4>Ring Rover</h4>
                     <p>Mastering the basics<br><strong>1,000 XP</strong></p>
                 </div>
                 <div class="badge-item">
-                    <div style="font-size: 4rem;">🛡️</div>
+                    <img src="badge-vanguard.png" alt="Vanguard Badge" class="badge-image" onerror="this.style.display='none'; this.nextElementSibling.style.fontSize='4rem'; this.nextElementSibling.textContent='🛡️';">
+                    <div style="display: none;"></div>
                     <h4>Vanguard</h4>
                     <p>Leading the pack<br><strong>1,500 XP</strong></p>
                 </div>
                 <div class="badge-item">
-                    <div style="font-size: 4rem;">👑</div>
+                    <img src="badge-chase-champion.png" alt="Chase Champion Badge" class="badge-image" onerror="this.style.display='none'; this.nextElementSibling.style.fontSize='4rem'; this.nextElementSibling.textContent='👑';">
+                    <div style="display: none;"></div>
                     <h4>Chase Champion</h4>
                     <p>Excellence in training<br><strong>2,000 XP</strong></p>
                 </div>
                 <div class="badge-item">
-                    <div style="font-size: 4rem;">🏆</div>
+                    <img src="badge-grand-champion.png" alt="Grand Champion Badge" class="badge-image" onerror="this.style.display='none'; this.nextElementSibling.style.fontSize='4rem'; this.nextElementSibling.textContent='🏆';">
+                    <div style="display: none;"></div>
                     <h4>Grand Champion</h4>
                     <p>Ultimate achievement<br><strong>2,500 XP</strong></p>
                 </div>
@@ -503,12 +515,16 @@
                 <!-- Privacy Policy -->
                 <div id="privacy" class="legal-document active">
                     <h2>Privacy Policy for Tail Arena</h2>
-                    <p class="last-updated">Last Updated: December 20, 2024</p>
+                    <p class="last-updated">Last Updated: December 20, 2025</p>
 
                     <h3>Introduction</h3>
-                    <p>Tail Arena ("we," "our," or "us") is owned and operated by <strong>STRAY APPTECH PTE. LTD.</strong>, a company registered in Singapore. We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and protect your information when you use our mobile application.</p>
-                    <p>By using the App, you agree to the collection and use of information in accordance with this policy. If you do not agree with the terms of this privacy policy, please do not access the App.</p>
-
+                    <p>Welcome to Tail Arena ("we," "our," or "us"). We are committed to protecting your privacy and the privacy of your personal information.
+        This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application
+        Tail Arena (the "App").</p>
+                    <p>
+        Please read this privacy policy carefully. By using the App, you agree to the collection and use of information in accordance
+        with this policy. If you do not agree with the terms of this privacy policy, please do not access the App.
+    
                     <h3>Information We Collect</h3>
                     
                     <h4>2.1 Personal Information You Provide</h4>
@@ -668,7 +684,6 @@
                         <p>
                             <strong>STRAY APPTECH PTE. LTD.</strong><br>
                             Email: <a href="mailto:support@stray-apps.com">support@stray-apps.com</a><br>
-                            Privacy & Support: <a href="mailto:support@stray-apps.com">support@stray-apps.com</a>
                         </p>
                         <p>We will respond to your inquiry within 30 days.</p>
                     </div>
@@ -677,16 +692,15 @@
                     <p>If you are located in the EEA, you have the right to lodge a complaint with a supervisory authority if you believe our processing of your personal data violates applicable law.</p>
 
                     <p style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #ddd;">
-                        <strong>Effective Date:</strong> December 20, 2024<br>
-                        <strong>Company:</strong> STRAY APPTECH PTE. LTD. (Singapore)<br>
-                        © 2024 Tail Arena. All rights reserved.
+                        <strong>Effective Date:</strong> December 20, 2025<br>
+                        © 2025 Tail Arena. All rights reserved.
                     </p>
                 </div>
 
                 <!-- Terms of Service -->
                 <div id="terms" class="legal-document">
                     <h2>Terms of Service</h2>
-                    <p class="last-updated">Last Updated: December 20, 2024</p>
+                    <p class="last-updated">Last Updated: December 20, 2025</p>
 
                     <h3>1. Acceptance of Terms</h3>
                     <p>By downloading, installing, or using Tail Arena ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, do not use the App. The App is owned and operated by <strong>STRAY APPTECH PTE. LTD.</strong>, a company registered in Singapore.</p>
@@ -858,9 +872,9 @@
                     </div>
 
                     <p style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #ddd;">
-                        <strong>Effective Date:</strong> December 20, 2024<br>
+                        <strong>Effective Date:</strong> December 20, 2025<br>
                         <strong>Company:</strong> STRAY APPTECH PTE. LTD. (Singapore)<br>
-                        © 2024 Tail Arena. All rights reserved.
+                        © 2025 Tail Arena. All rights reserved.
                     </p>
                 </div>
             </div>
@@ -877,7 +891,7 @@
             </p>
             <p>Contact: <a href="mailto:support@stray-apps.com">support@stray-apps.com</a></p>
             <p><strong>STRAY APPTECH PTE. LTD.</strong> (Singapore)</p>
-            <p>&copy; 2024 Tail Arena. All rights reserved.</p>
+            <p>&copy; 2025 Tail Arena. All rights reserved.</p>
         </div>
     </footer>
 
@@ -887,21 +901,38 @@
             document.querySelectorAll('.legal-document').forEach(doc => {
                 doc.classList.remove('active');
             });
-            
+
             // Remove active class from all buttons
             document.querySelectorAll('.legal-nav button').forEach(btn => {
                 btn.classList.remove('active');
             });
-            
+
             // Show selected document
             document.getElementById(docId).classList.add('active');
-            
+
             // Add active class to clicked button
             document.getElementById(docId + 'Btn').classList.add('active');
-            
+
             // Scroll to top of legal section
             document.getElementById('legal').scrollIntoView({ behavior: 'smooth' });
         }
+
+        // Check URL on page load for privacy redirect
+        window.addEventListener('DOMContentLoaded', function() {
+            const path = window.location.pathname;
+            const hash = window.location.hash;
+
+            // Check if URL ends with /privacy or has #privacy hash
+            if (path.endsWith('/privacy') || hash === '#privacy') {
+                // Show privacy policy
+                showDocument('privacy');
+
+                // Scroll to legal section
+                setTimeout(function() {
+                    document.getElementById('legal').scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        });
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {

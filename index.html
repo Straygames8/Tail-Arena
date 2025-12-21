@@ -502,107 +502,194 @@
             <div class="legal-content">
                 <!-- Privacy Policy -->
                 <div id="privacy" class="legal-document active">
-                    <h2>Privacy Policy</h2>
-                    <p class="last-updated">Last Updated: December 9, 2025</p>
+                    <h2>Privacy Policy for Tail Arena</h2>
+                    <p class="last-updated">Last Updated: December 20, 2024</p>
 
                     <h3>Introduction</h3>
-                    <p>TailArena ("we," "our," or "us") respects your privacy and is committed to protecting your personal data. This privacy policy explains how we collect, use, and protect your information when you use our mobile application.</p>
+                    <p>Tail Arena ("we," "our," or "us") is owned and operated by <strong>STRAY APPTECH PTE. LTD.</strong>, a company registered in Singapore. We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and protect your information when you use our mobile application.</p>
+                    <p>By using the App, you agree to the collection and use of information in accordance with this policy. If you do not agree with the terms of this privacy policy, please do not access the App.</p>
 
                     <h3>Information We Collect</h3>
                     
-                    <h4>Information You Provide</h4>
+                    <h4>2.1 Personal Information You Provide</h4>
                     <ul>
                         <li><strong>Account Information:</strong> Email address, username, password (encrypted)</li>
-                        <li><strong>Pet Information:</strong> Pet name, breed, age, training goals, behavioral data</li>
+                        <li><strong>Pet Profiles:</strong> Pet name, breed, age, birthday, photos, and other pet-related information</li>
+                        <li><strong>Payment Information:</strong> Processed securely by Stripe (we do not store credit card details)</li>
                         <li><strong>Profile Data:</strong> User preferences, training settings</li>
                         <li><strong>Progress Data:</strong> Lesson completions, XP earned, achievements, badges</li>
+                        <li><strong>Support Communications:</strong> When you contact us for help</li>
                     </ul>
 
-                    <h4>Automatically Collected Information</h4>
+                    <h4>2.2 Automatically Collected Information</h4>
                     <ul>
-                        <li><strong>Usage Data:</strong> App features used, lessons completed, time spent in app</li>
-                        <li><strong>Device Information:</strong> Device type, operating system, app version</li>
+                        <li><strong>Usage Data:</strong> App features used, lessons completed, time spent in app, challenge participation</li>
+                        <li><strong>Device Information:</strong> Device type, operating system, unique device identifiers, app version</li>
                         <li><strong>Performance Data:</strong> Crash reports, error logs (anonymized)</li>
+                        <li><strong>Location Data:</strong> Approximate location (only if you grant permission)</li>
                     </ul>
 
-                    <h3>How We Use Your Information</h3>
-                    <p>We use your information to:</p>
+                    <h4>2.3 Photos and Camera Access</h4>
+                    <p>If you grant permission, we access your device's camera and photo library to:</p>
                     <ul>
-                        <li>Provide and maintain the TailArena service</li>
-                        <li>Create and manage your account</li>
-                        <li>Track your training progress and achievements</li>
-                        <li>Display your ranking on leaderboards</li>
-                        <li>Process subscription payments</li>
-                        <li>Send important service notifications</li>
-                        <li>Improve app features and user experience</li>
-                        <li>Respond to support requests</li>
-                        <li>Prevent fraud and abuse</li>
+                        <li>Take photos of your pets</li>
+                        <li>Upload existing photos from your library</li>
+                        <li>Create and customize pet profiles</li>
                     </ul>
+                    <p>We only access photos when you explicitly choose to use this feature. Photos are stored securely and are only visible to you.</p>
 
-                    <h3>Data Storage and Security</h3>
+                    <h3>3. How We Use Your Information</h3>
+                    <p>We use the information we collect to:</p>
                     <ul>
-                        <li>All data is stored securely using Supabase infrastructure</li>
-                        <li>Passwords are encrypted using industry-standard methods</li>
-                        <li>We use SSL/TLS encryption for data transmission</li>
-                        <li>We implement appropriate security measures to protect against unauthorized access</li>
+                        <li><strong>Provide Services:</strong> Create and manage your account, pet profiles, and subscription</li>
+                        <li><strong>Process Payments:</strong> Handle subscription payments securely through Stripe</li>
+                        <li><strong>Personalize Experience:</strong> Customize training lessons and recommendations based on your pet's profile</li>
+                        <li><strong>Track Progress:</strong> Monitor lesson completion, achievements, and leaderboard rankings</li>
+                        <li><strong>Send Notifications:</strong> Provide reminders, updates, and important information about your pets</li>
+                        <li><strong>Improve the App:</strong> Analyze usage patterns to enhance features and user experience</li>
+                        <li><strong>Customer Support:</strong> Respond to your requests, questions, and technical issues</li>
+                        <li><strong>Security:</strong> Detect and prevent fraud, abuse, and security incidents</li>
+                        <li><strong>Legal Compliance:</strong> Comply with applicable laws and regulations</li>
                     </ul>
 
-                    <h3>Data Sharing</h3>
+                    <h3>4. Data Storage and Security</h3>
+
+                    <h4>4.1 Data Storage</h4>
+                    <p>Your data is stored securely using Supabase, a trusted cloud database provider. Supabase uses industry-standard security measures including:</p>
+                    <ul>
+                        <li>Encrypted data transmission (TLS/SSL)</li>
+                        <li>Encrypted data storage (AES-256)</li>
+                        <li>Regular security audits and updates</li>
+                        <li>Access controls and authentication</li>
+                    </ul>
+
+                    <h4>4.2 Payment Security</h4>
+                    <p>All payment information is processed by Stripe, a PCI-DSS compliant payment processor. We do not store your credit card information on our servers.</p>
+
+                    <h4>4.3 Security Measures</h4>
+                    <ul>
+                        <li>Encryption of data in transit and at rest</li>
+                        <li>Secure authentication and password hashing (bcrypt)</li>
+                        <li>iOS Keychain for secure token storage</li>
+                        <li>Limited access to personal data</li>
+                        <li>Regular security assessments</li>
+                    </ul>
+                    <p>However, no method of transmission over the Internet is 100% secure. While we strive to protect your personal information, we cannot guarantee its absolute security.</p>
+
+                    <h3>5. How We Share Your Information</h3>
                     <div class="highlight">
                         <strong>We DO NOT sell your personal information.</strong>
                     </div>
-                    <p>We may share data with:</p>
+
+                    <h4>5.1 Service Providers</h4>
                     <ul>
-                        <li><strong>Payment Processors:</strong> For subscription management (Apple Pay)</li>
-                        <li><strong>Service Providers:</strong> Cloud hosting (Supabase), analytics</li>
-                        <li><strong>Legal Requirements:</strong> If required by law or to protect our rights</li>
+                        <li><strong>Supabase:</strong> Cloud database and authentication services (data hosting at https://bbjhxrflgmeiirbrpnvo.supabase.co)</li>
+                        <li><strong>Stripe:</strong> Payment processing for subscriptions and in-app purchases</li>
+                        <li><strong>Cloud Storage:</strong> Secure storage of pet photos and user-generated content</li>
                     </ul>
 
-                    <h3>Your Rights</h3>
-                    <p>You have the right to:</p>
+                    <h4>5.2 Leaderboard and Social Features</h4>
+                    <p>When you participate in challenges and compete on the leaderboard, certain information may be visible to other users:</p>
                     <ul>
-                        <li>Access your personal data</li>
-                        <li>Update or correct your information</li>
-                        <li>Delete your account and data</li>
-                        <li>Export your data</li>
-                        <li>Opt-out of non-essential communications</li>
+                        <li>Your username</li>
+                        <li>Your pet's name</li>
+                        <li>Your ranking and achievement scores</li>
                     </ul>
-                    <p>To exercise these rights, contact us at: <strong>support@tailarena.com</strong></p>
 
-                    <h3>Children's Privacy</h3>
-                    <p>TailArena is not intended for children under 13. We do not knowingly collect data from children under 13. If you believe we have collected data from a child under 13, please contact us immediately.</p>
+                    <h4>5.3 Legal Requirements</h4>
+                    <p>We may disclose your information if required by law or in response to valid requests by public authorities.</p>
 
-                    <h3>Data Retention</h3>
-                    <p>We retain your data while your account is active and for a reasonable period thereafter. You can request deletion at any time.</p>
+                    <h4>5.4 Business Transfers</h4>
+                    <p>If we are involved in a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction.</p>
 
-                    <h3>Third-Party Services</h3>
-                    <p>We use:</p>
+                    <h3>6. Your Data Rights</h3>
+                    <p>Depending on your location, you may have the following rights:</p>
                     <ul>
-                        <li><strong>Supabase:</strong> Database and authentication</li>
-                        <li><strong>Apple App Store:</strong> In-app purchases and subscriptions</li>
+                        <li><strong>Access:</strong> Request a copy of the personal information we hold about you</li>
+                        <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information</li>
+                        <li><strong>Deletion:</strong> Request deletion of your personal information</li>
+                        <li><strong>Portability:</strong> Request transfer of your data to another service</li>
+                        <li><strong>Objection:</strong> Object to our processing of your personal information</li>
+                        <li><strong>Restriction:</strong> Request restriction of processing of your information</li>
+                        <li><strong>Withdraw Consent:</strong> Withdraw consent where processing is based on consent</li>
                     </ul>
-                    <p>These services have their own privacy policies.</p>
+                    <p>To exercise any of these rights, please contact us at: <strong>support@stray-apps.com</strong></p>
 
-                    <h3>Changes to This Policy</h3>
-                    <p>We may update this policy periodically. We will notify you of significant changes via email or app notification.</p>
+                    <h3>7. Data Retention</h3>
+                    <p>We retain your personal information for as long as necessary to provide you with our services:</p>
+                    <ul>
+                        <li><strong>Account Data:</strong> Retained while your account is active</li>
+                        <li><strong>Pet Profiles:</strong> Retained until you delete them or close your account</li>
+                        <li><strong>Payment Records:</strong> Retained as required by law (typically 7 years)</li>
+                        <li><strong>Usage Logs:</strong> Retained for up to 90 days for operational purposes</li>
+                    </ul>
+                    <p>When you delete your account, we will delete or anonymize your personal information, unless we are required to retain it for legal or regulatory purposes.</p>
 
-                    <h3>Contact Us</h3>
-                    <p>If you have questions about this privacy policy:</p>
-                    <p><strong>Email:</strong> support@tailarena.com</p>
+                    <h3>8. Children's Privacy</h3>
+                    <p>Our App is not intended for children under the age of 13 (or 16 in the EEA). We do not knowingly collect personal information from children under 13. If you believe we have collected information from a child under 13, please contact us immediately at <strong>support@stray-apps.com</strong>, and we will take steps to delete such information.</p>
 
-                    <h3>International Users</h3>
-                    <p>By using TailArena, you consent to the transfer of your information to the United States and other countries where our service providers operate.</p>
+                    <h3>9. International Data Transfers</h3>
+                    <p>Your information may be transferred to and maintained on servers located outside of Singapore, including the United States and other countries where data protection laws may differ. By using the App, you consent to the transfer of your information to these countries.</p>
 
-                    <p style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #ddd;"><strong>Effective Date:</strong> December 9, 2025<br>© 2025 TailArena. All rights reserved.</p>
+                    <h3>10. California Privacy Rights (CCPA)</h3>
+                    <p>If you are a California resident, you have specific rights under the California Consumer Privacy Act:</p>
+                    <ul>
+                        <li>Right to know what personal information is collected</li>
+                        <li>Right to know if personal information is sold or disclosed</li>
+                        <li>Right to deletion of personal information</li>
+                        <li>Right to non-discrimination for exercising CCPA rights</li>
+                    </ul>
+                    <p><strong>Note:</strong> We do not sell your personal information.</p>
+
+                    <h3>11. GDPR Rights (EEA Residents)</h3>
+                    <p>If you are located in the European Economic Area (EEA), we process your personal information based on the following legal bases:</p>
+                    <ul>
+                        <li><strong>Contract:</strong> To provide services you've requested</li>
+                        <li><strong>Consent:</strong> When you've given explicit consent</li>
+                        <li><strong>Legitimate Interest:</strong> To improve our services and communicate with you</li>
+                        <li><strong>Legal Obligation:</strong> To comply with legal requirements</li>
+                    </ul>
+
+                    <h3>12. Push Notifications</h3>
+                    <p>We may send you push notifications regarding your pet's care schedule, lesson reminders, and important updates. You can disable push notifications at any time through your device settings.</p>
+
+                    <h3>13. Changes to This Privacy Policy</h3>
+                    <p>We may update our Privacy Policy from time to time. We will notify you of any changes by:</p>
+                    <ul>
+                        <li>Posting the new Privacy Policy in the App and on this website</li>
+                        <li>Updating the "Last Updated" date at the top of this policy</li>
+                        <li>Sending you a notification (for material changes)</li>
+                    </ul>
+                    <p>Your continued use of the App after changes are posted constitutes your acceptance of the updated Privacy Policy.</p>
+
+                    <h3>14. Contact Us</h3>
+                    <div class="highlight">
+                        <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+                        <p>
+                            <strong>STRAY APPTECH PTE. LTD.</strong><br>
+                            Email: <a href="mailto:support@stray-apps.com">support@stray-apps.com</a><br>
+                            Privacy & Support: <a href="mailto:support@stray-apps.com">support@stray-apps.com</a>
+                        </p>
+                        <p>We will respond to your inquiry within 30 days.</p>
+                    </div>
+
+                    <h3>15. Supervisory Authority</h3>
+                    <p>If you are located in the EEA, you have the right to lodge a complaint with a supervisory authority if you believe our processing of your personal data violates applicable law.</p>
+
+                    <p style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #ddd;">
+                        <strong>Effective Date:</strong> December 20, 2024<br>
+                        <strong>Company:</strong> STRAY APPTECH PTE. LTD. (Singapore)<br>
+                        © 2024 Tail Arena. All rights reserved.
+                    </p>
                 </div>
 
                 <!-- Terms of Service -->
                 <div id="terms" class="legal-document">
                     <h2>Terms of Service</h2>
-                    <p class="last-updated">Last Updated: December 9, 2025</p>
+                    <p class="last-updated">Last Updated: December 20, 2024</p>
 
                     <h3>1. Acceptance of Terms</h3>
-                    <p>By downloading, installing, or using TailArena ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, do not use the App.</p>
+                    <p>By downloading, installing, or using Tail Arena ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, do not use the App. The App is owned and operated by <strong>STRAY APPTECH PTE. LTD.</strong>, a company registered in Singapore.</p>
 
                     <h3>2. Description of Service</h3>
                     <p>TailArena is a mobile application designed to help users train their dogs through gamified lessons, progress tracking, and achievement systems.</p>
@@ -760,14 +847,21 @@
 
                     <h3>13. Contact Information</h3>
                     <p>For questions about these Terms:</p>
-                    <p><strong>Email:</strong> support@tailarena.com</p>
+                    <p>
+                        <strong>STRAY APPTECH PTE. LTD.</strong><br>
+                        <strong>Email:</strong> <a href="mailto:support@stray-apps.com">support@stray-apps.com</a>
+                    </p>
 
                     <h3>14. Acknowledgment</h3>
                     <div class="highlight">
-                        <p><strong>BY USING TAILARENA, YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND AGREE TO BE BOUND BY THESE TERMS OF SERVICE.</strong></p>
+                        <p><strong>BY USING TAIL ARENA, YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND AGREE TO BE BOUND BY THESE TERMS OF SERVICE.</strong></p>
                     </div>
 
-                    <p style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #ddd;"><strong>Effective Date:</strong> December 9, 2025<br>© 2025 TailArena. All rights reserved.</p>
+                    <p style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #ddd;">
+                        <strong>Effective Date:</strong> December 20, 2024<br>
+                        <strong>Company:</strong> STRAY APPTECH PTE. LTD. (Singapore)<br>
+                        © 2024 Tail Arena. All rights reserved.
+                    </p>
                 </div>
             </div>
         </div>
@@ -776,13 +870,14 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p><strong>TailArena</strong> - Transform Your Dog Training Journey</p>
+            <p><strong>Tail Arena</strong> - Transform Your Dog Training Journey</p>
             <p>
-                <a href="#legal" onclick="showDocument('privacy')">Privacy Policy</a> | 
+                <a href="#legal" onclick="showDocument('privacy')">Privacy Policy</a> |
                 <a href="#legal" onclick="showDocument('terms')">Terms of Service</a>
             </p>
-            <p>Contact: <a href="mailto:support@tailarena.com">support@tailarena.com</a></p>
-            <p>&copy; 2025 TailArena. All rights reserved.</p>
+            <p>Contact: <a href="mailto:support@stray-apps.com">support@stray-apps.com</a></p>
+            <p><strong>STRAY APPTECH PTE. LTD.</strong> (Singapore)</p>
+            <p>&copy; 2024 Tail Arena. All rights reserved.</p>
         </div>
     </footer>
 

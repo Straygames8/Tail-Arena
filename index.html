@@ -6,6 +6,17 @@
     <meta name="description" content="TailArena - Transform your dog training journey into an exciting game. Earn badges, complete lessons, and compete on the leaderboard!">
     <title>TailArena - Gamified Dog Training</title>
     <style>
+        :root {
+            --ink: #ffffff;
+            --panel: rgba(0, 0, 0, 0.04);
+            --glow: rgba(90, 224, 255, 0.15);
+            --accent: #a56cff;
+            --accent-2: #5be3ff;
+            --text: #1a1a1a;
+            --muted: #666666;
+            --card: #f5f5f5;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,25 +24,44 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Manrope', 'Poppins', 'Inter', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text);
+            background: radial-gradient(circle at 20% 20%, rgba(165, 108, 255, 0.08), transparent 35%),
+                        radial-gradient(circle at 80% 0%, rgba(91, 227, 255, 0.08), transparent 30%),
+                        linear-gradient(135deg, #ffffff 0%, #f8f9fa 45%, #e9ecef 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 60% 40%, rgba(165, 108, 255, 0.03), transparent 30%),
+                        linear-gradient(120deg, rgba(0, 0, 0, 0.02) 10%, transparent 10%, transparent 50%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0.02) 60%, transparent 60%, transparent);
+            background-size: 240px 240px;
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
+            z-index: 1;
         }
 
         /* Header */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         nav {
@@ -44,54 +74,458 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
             font-size: 1.8rem;
-            font-weight: bold;
-            color: #667eea;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: 0.5px;
         }
 
         .logo img {
-            height: 40px;
+            height: 42px;
             width: auto;
+            filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.35));
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
+            color: var(--muted);
+            font-weight: 600;
+            padding: 0.4rem 0.75rem;
+            border-radius: 999px;
+            transition: color 0.3s, background 0.3s;
         }
 
         .nav-links a:hover {
-            color: #667eea;
+            color: var(--text);
+            background: rgba(0, 0, 0, 0.06);
         }
 
         /* Hero Section */
         .hero {
+            padding: 7rem 0 5rem;
+            color: var(--text);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 540px;
+            height: 540px;
+            right: -120px;
+            top: -160px;
+            background: radial-gradient(circle, rgba(91, 227, 255, 0.12), transparent 60%);
+            filter: blur(20px);
+            z-index: 0;
+        }
+
+        .hero-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-copy {
             text-align: center;
-            padding: 6rem 0;
-            color: white;
+            max-width: 800px;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 0.8s ease-out;
+            font-size: 3.25rem;
+            margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
+            gap: 0.8rem;
+            animation: fadeInUp 0.9s ease-out;
+            letter-spacing: -0.5px;
         }
 
         .hero-logo {
-            height: 80px;
+            height: 82px;
             width: auto;
+            filter: drop-shadow(0 14px 40px rgba(0, 0, 0, 0.35));
+        }
+
+        .hero p {
+            font-size: 1.35rem;
+            margin-bottom: 2rem;
+            opacity: 0.92;
+            animation: fadeInUp 0.9s ease-out 0.1s backwards;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            background: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 80%);
+            color: #ffffff;
+            padding: 0.95rem 2.6rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.05rem;
+            letter-spacing: 0.2px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 24px rgba(91, 227, 255, 0.25), 0 4px 12px rgba(0, 0, 0, 0.15);
+            animation: fadeInUp 0.9s ease-out 0.2s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 12px 32px rgba(91, 227, 255, 0.35), 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-preview {
+            width: 100%;
+            position: relative;
+        }
+
+
+        .hero-card {
+            background: rgba(12, 13, 30, 0.85);
+            border-radius: 18px;
+            padding: 1.25rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 0.9rem 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .hero-brand img {
+            height: 54px;
+            width: auto;
+        }
+
+        .hero-badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+        }
+
+        .stack-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 0.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .stack-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(91, 227, 255, 0.4);
+        }
+
+        .hero-badge {
+            width: 100%;
+            height: 86px;
+            object-fit: contain;
+        }
+
+        /* App Screenshots Carousel */
+        .app-screenshots {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 45.85%;
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .carousel-slides {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .screenshot-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .screenshot-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .carousel-button {
+            pointer-events: all;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            color: var(--text);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-button:hover {
+            background: rgba(91, 227, 255, 0.15);
+            border-color: rgba(91, 227, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.6rem;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--accent-2);
+            width: 28px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-container {
+                padding-bottom: 75%;
+            }
+
+            .carousel-button {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                flex-direction: column;
+            }
+
+            .hero-logo {
+                height: 60px;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Features Section */
+        .features {
+            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 60%, #f5f5f5 100%);
+            padding: 5rem 0 4.5rem;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.4rem;
+            margin-bottom: 1.25rem;
+            color: #1a1a1a;
+            letter-spacing: -0.3px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--muted);
+            max-width: 640px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.05rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-card {
+            background: #ffffff;
+            padding: 1.6rem;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            color: var(--text);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(165, 108, 255, 0.05), rgba(91, 227, 255, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(91, 227, 255, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-card:hover::after {
+            opacity: 1;
+        }
+
+        .feature-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-glyph {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+            display: grid;
+            place-items: center;
+            color: #ffffff;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(91, 227, 255, 0.25);
+        }
+
+        .feature-glyph::after {
+            content: attr(data-label);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.2px;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+        }
+
+        /* Badges Section */
+        .badges {
+            background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 40%, #f8f9fa 100%);
+            padding: 5rem 0;
+        }
+
+        .badges h2 {
+            text-align: center;
+            font-size: 2.4rem;
+            margin-bottom: 0.8rem;
+            color: #1a1a1a;
+        }
+
+        .badges-subtitle {
+            text-align: center;
+            font-size: 1.05rem;
+            color: var(--muted);
+            margin-bottom: 2.6rem;
+        }
+
+        .badge-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.25rem;
+        }
+
+        .badge-item {
+            background: #ffffff;
+            padding: 1.6rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .badge-item:hover {
+            transform: translateY(-6px);
+            border-color: rgba(91, 227, 255, 0.3);
         }
 
         .badge-image {
@@ -99,198 +533,104 @@
             height: 120px;
             object-fit: contain;
             margin: 0 auto 1rem;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            animation: fadeInUp 0.8s ease-out 0.2s backwards;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: white;
-            color: #667eea;
-            padding: 1rem 3rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: fadeInUp 0.8s ease-out 0.4s backwards;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        /* Features Section */
-        .features {
-            background: white;
-            padding: 5rem 0;
-        }
-
-        .features h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #667eea;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            color: white;
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Badges Section */
-        .badges {
-            background: #f8f9fa;
-            padding: 5rem 0;
-        }
-
-        .badges h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #667eea;
-        }
-
-        .badges-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 3rem;
-        }
-
-        .badge-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .badge-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.35));
         }
 
         .badge-item h4 {
-            color: #667eea;
-            margin-top: 1rem;
-            font-size: 1.3rem;
+            color: #1a1a1a;
+            margin-top: 0.35rem;
+            font-size: 1.2rem;
+            letter-spacing: -0.1px;
         }
 
         .badge-item p {
-            color: #666;
-            margin-top: 0.5rem;
+            color: var(--muted);
+            margin-top: 0.35rem;
+            line-height: 1.4;
         }
 
         /* Legal Section */
         .legal-section {
-            background: white;
+            background: #f8f9fa;
             padding: 5rem 0;
         }
 
         .legal-content {
-            max-width: 900px;
+            max-width: 980px;
             margin: 0 auto;
-            background: #f8f9fa;
+            background: #ffffff;
             padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 18px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         }
 
         .legal-content h2 {
-            color: #667eea;
-            font-size: 2rem;
+            color: #1a1a1a;
+            font-size: 1.9rem;
             margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid rgba(91, 227, 255, 0.5);
         }
 
         .legal-content h3 {
-            color: #764ba2;
-            font-size: 1.5rem;
+            color: var(--accent);
+            font-size: 1.35rem;
             margin-top: 2rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .legal-content h4 {
-            color: #333;
-            font-size: 1.2rem;
-            margin-top: 1.5rem;
+            color: #1a1a1a;
+            font-size: 1.05rem;
+            margin-top: 1.25rem;
             margin-bottom: 0.5rem;
         }
 
         .legal-content p, .legal-content li {
-            color: #555;
-            margin-bottom: 1rem;
+            color: var(--muted);
+            margin-bottom: 0.9rem;
         }
 
         .legal-content ul {
-            margin-left: 2rem;
+            margin-left: 1.6rem;
             margin-bottom: 1rem;
         }
 
         .legal-content strong {
-            color: #333;
+            color: #1a1a1a;
         }
 
         .legal-nav {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.6rem;
         }
 
         .legal-nav button {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            margin: 0 0.5rem;
-            border-radius: 50px;
+            background: #ffffff;
+            color: var(--text);
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            padding: 0.85rem 1.75rem;
+            margin: 0 0.4rem;
+            border-radius: 12px;
             font-size: 1rem;
-            font-weight: bold;
+            font-weight: 700;
             cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
+            transition: background 0.25s ease, transform 0.2s ease, border-color 0.25s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
         }
 
         .legal-nav button:hover {
-            background: #764ba2;
+            background: rgba(91, 227, 255, 0.08);
+            border-color: rgba(91, 227, 255, 0.3);
             transform: translateY(-2px);
         }
 
         .legal-nav button.active {
-            background: #764ba2;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(91, 227, 255, 0.25);
         }
 
         .legal-document {
@@ -304,19 +644,21 @@
 
         /* Footer */
         footer {
-            background: #2d3748;
-            color: white;
+            background: #e9ecef;
+            color: var(--muted);
             text-align: center;
             padding: 3rem 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         footer p {
-            margin-bottom: 1rem;
+            margin-bottom: 0.9rem;
         }
 
         footer a {
-            color: #667eea;
+            color: var(--accent-2);
             text-decoration: none;
+            font-weight: 700;
         }
 
         footer a:hover {
@@ -345,48 +687,64 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.6rem;
                 flex-direction: column;
+                align-items: flex-start;
             }
 
             .hero-logo {
-                height: 60px;
+                height: 64px;
             }
 
             .logo img {
-                height: 32px;
+                height: 34px;
             }
+        }
 
-            .hero p {
-                font-size: 1.2rem;
+        @media (max-width: 640px) {
+            nav {
+                flex-direction: column;
+                gap: 0.8rem;
             }
 
             .nav-links {
-                gap: 1rem;
+                gap: 0.8rem;
+            }
+
+            .hero {
+                padding-top: 5.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-preview {
+                padding: 1.2rem;
             }
 
             .legal-content {
-                padding: 2rem 1.5rem;
+                padding: 2.25rem 1.5rem;
             }
 
             .legal-nav button {
-                margin: 0.5rem;
-                padding: 0.8rem 1.5rem;
+                margin: 0.35rem;
+                width: calc(50% - 0.7rem);
             }
         }
 
         .highlight {
-            background: rgba(102, 126, 234, 0.1);
-            padding: 1.5rem;
-            border-left: 4px solid #667eea;
+            background: rgba(91, 227, 255, 0.08);
+            padding: 1.25rem;
+            border-left: 4px solid rgba(91, 227, 255, 0.6);
             margin: 1.5rem 0;
-            border-radius: 5px;
+            border-radius: 8px;
         }
 
         .last-updated {
-            color: #999;
+            color: var(--muted);
             font-size: 0.9rem;
             font-style: italic;
             margin-bottom: 2rem;
@@ -400,7 +758,7 @@
             <nav>
                 <div class="logo">
                     <img src="logo.png" alt="TailArena Logo">
-                    TailArena
+                    <img src="title.png" alt="TailArena title">
                 </div>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
@@ -415,12 +773,42 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <h1>
-                <img src="title.png" alt="Tail Arena" class="hero-logo" onerror="this.onerror=null; this.src='logo.png'; this.nextSibling.textContent='TailArena';">
-                <span style="display: none;"></span>
-            </h1>
-            <p>Transform Your Dog Training Journey Into an Exciting Game</p>
-            <a href="#" class="cta-button">Download on App Store</a>
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <h1>
+                        <img src="logo.png" alt="Tail Arena" class="hero-logo" onerror="this.onerror=null; this.src='logo.png'; this.nextSibling.textContent='TailArena';">
+                        <span style="display: none;"></span>
+                    </h1>
+                    <p>Transform Your Dog Training Journey Into an Exciting Game</p>
+                    <a href="#" class="cta-button">Download on App Store</a>
+                </div>
+                <div class="hero-preview">
+                    <div class="app-screenshots">
+                        <div class="carousel-container">
+                            <div class="carousel-slides" id="carouselSlides">
+                                <div class="screenshot-slide">
+                                    <img src="screenshot1.png" alt="TailArena App Screenshot 1">
+                                </div>
+                                <div class="screenshot-slide">
+                                    <img src="screenshot2.png" alt="TailArena App Screenshot 2">
+                                </div>
+                                <div class="screenshot-slide">
+                                    <img src="screenshot3.png" alt="TailArena App Screenshot 3">
+                                </div>
+                            </div>
+                            <div class="carousel-nav">
+                                <button class="carousel-button" onclick="moveCarousel(-1)" aria-label="Previous">‹</button>
+                                <button class="carousel-button" onclick="moveCarousel(1)" aria-label="Next">›</button>
+                            </div>
+                            <div class="carousel-dots" id="carouselDots">
+                                <span class="carousel-dot active" onclick="goToSlide(0)"></span>
+                                <span class="carousel-dot" onclick="goToSlide(1)"></span>
+                                <span class="carousel-dot" onclick="goToSlide(2)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -430,34 +818,46 @@
             <h2>Why Tail Arena?</h2>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🐾</div>
-                    <h3>Pet Profile Management</h3>
-                    <p>Create detailed profiles for your pets with photos, breed info, age, and birthday tracking. Support for multiple pets with different subscription tiers.</p>
+                    <div class="feature-inner">
+                        <div class="feature-glyph" data-label="PF"></div>
+                        <h3>Pet Profile Management</h3>
+                        <p>Create detailed profiles for your pets with photos, breed info, age, and birthday tracking. Support for multiple pets with different subscription tiers.</p>
+                    </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>Interactive Training Lessons</h3>
-                    <p>Access expert-designed training curriculum with video demonstrations, step-by-step instructions, and progressive skill-building exercises.</p>
+                    <div class="feature-inner">
+                        <div class="feature-glyph" data-label="TL"></div>
+                        <h3>Interactive Training Lessons</h3>
+                        <p>Access expert-designed training curriculum with video demonstrations, step-by-step instructions, and progressive skill-building exercises.</p>
+                    </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Daily Challenges</h3>
-                    <p>Complete fun daily challenges to keep training engaging. Earn points, build streaks, and unlock achievements as you practice with your pet.</p>
+                    <div class="feature-inner">
+                        <div class="feature-glyph" data-label="DC"></div>
+                        <h3>Daily Challenges</h3>
+                        <p>Complete fun daily challenges to keep training engaging. Earn points, build streaks, and unlock achievements as you practice with your pet.</p>
+                    </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🏆</div>
-                    <h3>Leaderboard & Community</h3>
-                    <p>Compete globally with other pet trainers. Climb rankings, earn badges, and join a supportive community of pet enthusiasts.</p>
+                    <div class="feature-inner">
+                        <div class="feature-glyph" data-label="LC"></div>
+                        <h3>Leaderboard & Community</h3>
+                        <p>Compete globally with other pet trainers. Climb rankings, earn badges, and join a supportive community of pet enthusiasts.</p>
+                    </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💝</div>
-                    <h3>Personalized Care Plans</h3>
-                    <p>Get customized training recommendations based on your pet's age, breed, and skill level. Tailored content for puppies, adults, and seniors.</p>
+                    <div class="feature-inner">
+                        <div class="feature-glyph" data-label="PC"></div>
+                        <h3>Personalized Care Plans</h3>
+                        <p>Get customized training recommendations based on your pet's age, breed, and skill level. Tailored content for puppies, adults, and seniors.</p>
+                    </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Progress Tracking</h3>
-                    <p>Monitor lesson completions, skill development, and achievement history. View detailed statistics and celebrate your pet's milestones.</p>
+                    <div class="feature-inner">
+                        <div class="feature-glyph" data-label="PT"></div>
+                        <h3>Progress Tracking</h3>
+                        <p>Monitor lesson completions, skill development, and achievement history. View detailed statistics and celebrate your pet's milestones.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -470,31 +870,31 @@
             <p class="badges-subtitle">Progress through the ranks as your pet masters new skills</p>
             <div class="badge-list">
                 <div class="badge-item">
-                    <img src="badge-pup-pilot.png" alt="Pup Pilot Badge" class="badge-image" onerror="this.style.display='none'; this.nextElementSibling.style.fontSize='4rem'; this.nextElementSibling.textContent='🎓';">
+                    <img src="pup_pilot.png" alt="Pup Pilot Badge" class="badge-image" onerror="this.style.display='none'; this.nextElementSibling.style.fontSize='4rem'; this.nextElementSibling.textContent='🎓';">
                     <div style="display: none;"></div>
                     <h4>Pup Pilot</h4>
                     <p>Starting your journey<br><strong>0 XP</strong></p>
                 </div>
                 <div class="badge-item">
-                    <img src="badge-ring-rover.png" alt="Ring Rover Badge" class="badge-image" onerror="this.style.display='none'; this.nextElementSibling.style.fontSize='4rem'; this.nextElementSibling.textContent='⭐';">
+                    <img src="ring_rover.png" alt="Ring Rover Badge" class="badge-image" onerror="this.style.display='none'; this.nextElementSibling.style.fontSize='4rem'; this.nextElementSibling.textContent='⭐';">
                     <div style="display: none;"></div>
                     <h4>Ring Rover</h4>
                     <p>Mastering the basics<br><strong>1,000 XP</strong></p>
                 </div>
                 <div class="badge-item">
-                    <img src="badge-vanguard.png" alt="Vanguard Badge" class="badge-image" onerror="this.style.display='none'; this.nextElementSibling.style.fontSize='4rem'; this.nextElementSibling.textContent='🛡️';">
+                    <img src="vanguard.png" alt="Vanguard Badge" class="badge-image" onerror="this.style.display='none'; this.nextElementSibling.style.fontSize='4rem'; this.nextElementSibling.textContent='🛡️';">
                     <div style="display: none;"></div>
                     <h4>Vanguard</h4>
                     <p>Leading the pack<br><strong>1,500 XP</strong></p>
                 </div>
                 <div class="badge-item">
-                    <img src="badge-chase-champion.png" alt="Chase Champion Badge" class="badge-image" onerror="this.style.display='none'; this.nextElementSibling.style.fontSize='4rem'; this.nextElementSibling.textContent='👑';">
+                    <img src="chase_champion.png" alt="Chase Champion Badge" class="badge-image" onerror="this.style.display='none'; this.nextElementSibling.style.fontSize='4rem'; this.nextElementSibling.textContent='👑';">
                     <div style="display: none;"></div>
                     <h4>Chase Champion</h4>
                     <p>Excellence in training<br><strong>2,000 XP</strong></p>
                 </div>
                 <div class="badge-item">
-                    <img src="badge-grand-champion.png" alt="Grand Champion Badge" class="badge-image" onerror="this.style.display='none'; this.nextElementSibling.style.fontSize='4rem'; this.nextElementSibling.textContent='🏆';">
+                    <img src="grand_champion.png" alt="Grand Champion Badge" class="badge-image" onerror="this.style.display='none'; this.nextElementSibling.style.fontSize='4rem'; this.nextElementSibling.textContent='🏆';">
                     <div style="display: none;"></div>
                     <h4>Grand Champion</h4>
                     <p>Ultimate achievement<br><strong>2,500 XP</strong></p>
@@ -693,7 +1093,7 @@
 
                     <p style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #ddd;">
                         <strong>Effective Date:</strong> December 20, 2025<br>
-                        © 2025 Tail Arena. All rights reserved.
+                        © 2025 STRAY APPTECH PTE. LTD. All rights reserved.
                     </p>
                 </div>
 
@@ -703,7 +1103,7 @@
                     <p class="last-updated">Last Updated: December 20, 2025</p>
 
                     <h3>1. Acceptance of Terms</h3>
-                    <p>By downloading, installing, or using Tail Arena ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, do not use the App. The App is owned and operated by <strong>STRAY APPTECH PTE. LTD.</strong>, a company registered in Singapore.</p>
+                    <p>By downloading, installing, or using Tail Arena ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, do not use the App.
 
                     <h3>2. Description of Service</h3>
                     <p>TailArena is a mobile application designed to help users train their dogs through gamified lessons, progress tracking, and achievement systems.</p>
@@ -873,8 +1273,7 @@
 
                     <p style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #ddd;">
                         <strong>Effective Date:</strong> December 20, 2025<br>
-                        <strong>Company:</strong> STRAY APPTECH PTE. LTD. (Singapore)<br>
-                        © 2025 Tail Arena. All rights reserved.
+                        © 2025 STRAY APPTECH PTE. LTD. All rights reserved.
                     </p>
                 </div>
             </div>
@@ -890,12 +1289,65 @@
                 <a href="#legal" onclick="showDocument('terms')">Terms of Service</a>
             </p>
             <p>Contact: <a href="mailto:support@stray-apps.com">support@stray-apps.com</a></p>
-            <p><strong>STRAY APPTECH PTE. LTD.</strong> (Singapore)</p>
-            <p>&copy; 2025 Tail Arena. All rights reserved.</p>
+            <p>© 2025 STRAY APPTECH PTE. LTD. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        // Carousel functionality
+        let currentSlide = 0;
+        const totalSlides = 3;
+        let autoSlideInterval;
+
+        function updateCarousel() {
+            const slides = document.getElementById('carouselSlides');
+            const dots = document.querySelectorAll('.carousel-dot');
+
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function moveCarousel(direction) {
+            currentSlide += direction;
+
+            if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            } else if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            }
+
+            updateCarousel();
+            resetAutoSlide();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+            resetAutoSlide();
+        }
+
+        function autoSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(autoSlide, 3000);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+
+        // Start auto-sliding when page loads
+        window.addEventListener('DOMContentLoaded', function() {
+            startAutoSlide();
+        });
+
         function showDocument(docId) {
             // Hide all documents
             document.querySelectorAll('.legal-document').forEach(doc => {
